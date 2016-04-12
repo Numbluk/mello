@@ -54,8 +54,12 @@
         <div id="lists">
           <h4 id="project_name">Project Name</h4>
           <div class="list" href="#">
-            <h6>Title:</h6>
-            <div class="card">stuff</div>
+            <h5>Title:</h5>
+            <div class="card">
+              <h6>stuff</h6>
+              <p>Tags:</p>
+              <p>C:</p>
+            </div>
             <a class="add_card" href="#">Add a card...</a>
           </div>
         </div>
@@ -78,20 +82,45 @@
       <h4 id="project_name" href="#">{{title}}</h4>
       {{#each lists}}
         <div class="lists" href="#">
-          <h6>{{id}}</h6>
-          {{#each lists.cards}}
-            <div class="card">{{content}}</div>
-          {{/each}}
+          <h5 class="list_title">{{id}}</h5>
+          {{> cardsPartial cards}}
           <a class="add_card" href="#">Add a card...</a>
         </div>
       {{/each}}
     </div>
   </script>
 
+  <script type="text/x-handlebars" id="card_in_list_template">
+    {{#each cards}}
+      <div class="card">
+        <p>{{id}}</p>
+
+        {{#if tags}}
+          <p><b>Tags:</b>
+            {{#each tags}}
+            <span>{{.}}</span>
+            {{/each}}
+          </p>
+        {{/if}}
+
+        {{#if comments}}
+          <span>C: {{comments.length}}</span>
+        {{/if}}
+      </div>
+    {{/each}}
+  </script>
+
+  <script type="text/x-handlebars" id="card_modal_template">
+    <div id="card_modal">
+
+    </div>
+    <div id="card_modal_bg"></div>
+  </script>
+
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
 <!-- Backbone javascripts -->
-  <script src="javascripts/"></script>
+  <script src="javascripts/app.js"></script>
 </body>
 </html>

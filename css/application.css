@@ -46,7 +46,7 @@ header a#show_boards {
   margin-bottom: 0;
   margin-top: 8px;
   color: #fff;
-  border-color: #fff;
+  border: none;
   font-weight: 600;
   background: #FF6138;
 }
@@ -167,7 +167,7 @@ div.list {
   font-weight: 600;
 }
 
-#lists h6 {
+#lists h5 {
   color: #515151;
   font-weight: bold;
   margin-bottom: 8px;
@@ -194,3 +194,11 @@ div.card {
 /***************************************************************************
 Cards
 ***************************************************************************/
+.card h6{
+  margin-bottom: 1px;
+}
+
+.card p {
+  margin: 2px 0 0 0;
+  font-style: italic;
+}
