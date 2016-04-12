@@ -1,0 +1,50 @@
+Trello:
+Board system.
+
+Property
+----------
+Properties:
+Events:
+Dependencies:
+
+
+Board
+----------
+Properties: Holds all lists
+Events: None. Just click to show
+Dependencies: All of its contents
+Result: Hard dependency and no real properties. Not a good candidate for a genuine backbone object. Will just present a compilation of lists where each board represents all lists that have been filtered.
+
+List
+----------
+Properties: Cards, board_name/project_name
+Events: Add/remove/edit cards, Copy/edit/delete list name,
+Dependencies: Cards
+Result: Hard dependency on cards. Several events. Will be a collection.
+
+Card
+----------
+Properties: comments, tags
+Events: Add/edit/delete comment, Add/edit/remove tags,
+Dependencies: Itself/Nothing
+Result: Model
+
+Events
+----------
+Properties: Comments, event
+Events: Click to show that card
+Dependencies: Cards
+Result: One model
+
+Views:
+Boards View
+Lists View
+Card View
+Event pane? Toggle events based on "#tag-list" - link to it
+  - filter events?
+
+
+Options
+----------
+One list of all :
+  - Would need to filter all models for each list
