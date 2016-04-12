@@ -1,3 +1,14 @@
+/***************************************************************************
+Main content
+***************************************************************************/
+html,
+body,
+.container,
+.row,
+main {
+  height: 100%;
+}
+
 .container {
   width: 100%;
   position: static;
@@ -21,6 +32,12 @@ header::after {
   clear: both;
 }
 
+header a {
+  text-decoration: none;
+  color: black;
+  font-style: italic;
+}
+
 header a#show_boards {
   float: left;
   height: 30px;
@@ -34,12 +51,6 @@ header a#show_boards {
   background: #FF6138;
 }
 
-header a {
-  text-decoration: none;
-  color: black;
-  font-style: italic;
-}
-
 header a#title {
   display: inline-block;
   position: absolute;
@@ -51,17 +62,13 @@ header a#title {
   font-weight: 600;
 }
 
-/***************************************************************************
-Main content
-***************************************************************************/
-html,
-body,
-.container,
-.row,
-main {
-  height: 100%;
+header a#show_boards:hover {
+  background: hsl(12, 100%, 70%);
 }
 
+header a#title:hover {
+  color: hsl(12, 100%, 70%);
+}
 
 /***************************************************************************
 Boards
