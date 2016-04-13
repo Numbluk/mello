@@ -10,7 +10,8 @@ var ListsView = Backbone.View.extend({
     "dblclick .list h5": "editList",
     "click div.remove": "removeList",
     "keypress #edit_list": "submitEdit",
-    "blur #edit_list": "render"
+    "blur #edit_list": "render",
+    "click .add_card": "addCard"
   },
 
   render: function(board_title_obj) {
@@ -123,5 +124,18 @@ var ListsView = Backbone.View.extend({
       $(e.target).val('');
       this.render();
     }
+  },
+
+  addCard: function(e) {
+    $(e.target).replaceWith("<input type='text' id='add_card'>");
+    $("input#add_card").focus();
+  },
+
+  submitCard: function(e) {
+
+  },
+
+  removeCard: function(e) {
+
   }
 });
