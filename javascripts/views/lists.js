@@ -9,11 +9,14 @@ var ListsView = Backbone.View.extend({
     "keypress #create_list": "checkInput",
     "dblclick .list h5": "editList",
     "click div.remove": "removeList",
-    "keypress #edit_list": "submitEdit"
+    "keypress #edit_list": "submitEdit",
+    "blur #edit_list": "render"
   },
 
   render: function(board_title_obj) {
-    if ( board_title_obj ) {
+    // make sure board_title_obj is not an event
+    // and assing board_title if new or current
+    if ( board_title_obj && board_title_obj.hasOwnProperty('board_title') ) {
       board_title = board_title_obj.board_title;
       this.current_board = board_title;
     } else {
