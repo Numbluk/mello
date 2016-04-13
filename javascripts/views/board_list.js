@@ -6,7 +6,8 @@ var BoardListView = Backbone.View.extend({
 
   events: {
     "click #create_board #create_board_title": "addInput",
-    "keypress #create_board input": "submitInput"
+    "keypress #create_board input": "submitInput",
+    "blur #create_board input": "render"
   },
 
   initialize: function() {
