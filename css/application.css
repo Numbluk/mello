@@ -117,6 +117,41 @@ main,
 .board:hover {
   background: #79BD8F;
   color: #fff;
+  cursor: grab;
+}
+
+a.board {
+  position: relative;
+}
+
+.board:hover div.remove {
+  transition: all 0.5s ease;
+  z-index: 2;
+}
+
+.board:hover div.remove:hover {
+  cursor: pointer;
+}
+
+div.remove{
+  position: absolute;
+  background: red;
+  height: 15px;
+  width: 3px;
+  right: 14px;
+  top: 7px;
+  transform: rotate(45deg);
+  z-index: -1;
+}
+
+div.remove::after {
+  content: "";
+  position: absolute;
+  background: red;
+  height: 3px;
+  width: 15px;
+  right: -6px;
+  top: 6px;
 }
 
 #create_board {
@@ -155,7 +190,7 @@ Lists
   padding: 66px 15px 0px 15px;
   overflow-x: auto;
   white-space: nowrap;
-  background: #00A388;
+  background: hsl(170, 100%, 32%);
 }
 
 #lists::after {
@@ -172,6 +207,16 @@ div.list {
   margin-right: 10px;
   padding: 1px 8px 0 8px;
   background: #dbdbdb;
+  position: relative;
+}
+
+div.list:hover div.remove {
+  transition: all 0.5s ease;
+  z-index: 2;
+}
+
+div.list:hover div.remove:hover {
+  cursor: pointer;
 }
 
 #lists h4 {
@@ -207,6 +252,21 @@ div.card {
 div.list,
 div.card {
   border-radius: 6px;
+}
+
+input#create_list {
+  position: absolute;
+  background: hsl(170, 75%, 32%);
+}
+
+input#create_list:focus {
+  border: none;
+  background: hsl(0, 0%, 90%);
+}
+
+input#edit_list {
+  width: 100%;
+  margin-top: 6px;
 }
 
 /***************************************************************************

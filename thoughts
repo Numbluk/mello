@@ -71,3 +71,11 @@ Displaying a list:
 
 After looking at which option to take for structure, will use one list for all cards:
   - Why? Because otherwise there will be nested views
+
+Left:
+- Edit/delete a list
+
+- Add a card to a list
+  - Add a comment and tag to the card?
+  - delete a card
+  - edit a card

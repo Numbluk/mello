@@ -56,7 +56,10 @@
   <script type="text/x-handlebars" id="boards_template">
       <h2>All Boards</h2>
       {{#each boards}}
-        <a class="board" href="#">{{.}}</a>
+        <a class="board" href="#">
+          {{.}}
+          <div class="remove"></div>
+        </a>
       {{/each}}
       <div id="create_board" class="board" href="#"><h6 id="create_board_title">New Board</h6></div>
   </script>
@@ -64,6 +67,7 @@
   <script type="text/x-handlebars" id="lists_template">
     {{#showLists board_title card_list}}
     {{/showLists}}
+    <input id="create_list" type="text" placeholder="Add a list...">
   </script>
 
 
