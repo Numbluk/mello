@@ -7,15 +7,17 @@ var BoardListView = Backbone.View.extend({
   events: {
     "click #create_board #create_board_title": "addInput",
     "keypress #create_board input": "submitInput",
-    "blur #create_board input": "render"
+    "blur #create_board input": "render",
+    "click a.board": "renderBoard"
   },
 
-  initialize: function() {
+  initialize: function(options) {
     this.render();
   },
 
   render: function() {
-    this.$el.html(this.template({ boards: this.model.get("board_list") }));
+    this.$el.html(this.template({ boards: this.collection.boards }));
+    this.$el.show();
   },
 
   addInput: function(e) {
@@ -34,8 +36,15 @@ var BoardListView = Backbone.View.extend({
         return;
       }
 
-      this.model.get("board_list").unshift( $(input).val() );
+      this.collection.boards.unshift( $(input).val() );
       this.render();
     }
+  },
+
+  renderBoard: function(e) {
+    this.trigger("render-board", {
+      board_title: $(e.target).text()
+    });
+    this.$el.hide();
   }
 });

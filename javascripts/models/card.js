@@ -1,5 +1,7 @@
 var Card = Backbone.Model.extend({
   defaults: {
-    content: ""
+    content: "",
+    list: "",
+    board: ""
   }
 });

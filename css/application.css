@@ -178,6 +178,8 @@ div.list {
   margin-bottom: 8px;
   position: fixed;
   top: 55px;
+  left: 15px;
+  right: 15px;
   border-bottom: 1px solid #fff;
   font-weight: 600;
 }

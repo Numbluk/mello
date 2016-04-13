@@ -44,25 +44,11 @@
       </header>
 
       <main>
-        <!-- board and lists here -->
-        <div id="boards">
-          <h2>All Boards</h2>
-          <a class="board" href="#">Title</a>
-          <div id="create_board" class="board"><h6 id="create_board_title">New Board</h6></div>
-        </div>
 
-        <div id="lists">
-          <h4 id="project_name">Project Name</h4>
-          <div class="list" href="#">
-            <h5>Title:</h5>
-            <div class="card">
-              <h6>stuff</h6>
-              <p>Tags:</p>
-              <p>C:</p>
-            </div>
-            <a class="add_card" href="#">Add a card...</a>
-          </div>
-        </div>
+        <!-- board and lists here -->
+        <div id="boards"></div>
+        <div id="lists"></div>
+
       </main>
     </div>
   </div>
@@ -76,17 +62,10 @@
   </script>
 
   <script type="text/x-handlebars" id="lists_template">
-    <div id="lists">
-      <h4 id="project_name" href="#">{{title}}</h4>
-      {{#each lists}}
-        <div class="lists" href="#">
-          <h5 class="list_title">{{id}}</h5>
-          {{> cardsPartial cards}}
-          <a class="add_card" href="#">Add a card...</a>
-        </div>
-      {{/each}}
-    </div>
+    {{#showLists board_title card_list}}
+    {{/showLists}}
   </script>
+
 
   <script type="text/x-handlebars" id="card_in_list_template">
     {{#each cards}}
@@ -119,8 +98,11 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
 <!-- Backbone javascripts -->
+
 <script src="javascripts/views/board_list.js"></script>
-<script src="javascripts/models/board_list.js"></script>
+<script src="javascripts/models/card.js"></script>
+<script src="javascripts/collections/list.js"></script>
+<script src="javascripts/views/lists.js"></script>
 <script src="javascripts/app.js"></script>
 </body>
 </html>
