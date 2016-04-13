@@ -48,7 +48,7 @@
         <div id="boards">
           <h2>All Boards</h2>
           <a class="board" href="#">Title</a>
-          <a id="new_board" class="board" href="#"> Create New Board</a>
+          <div id="create_board" class="board"><h6 id="create_board_title">New Board</h6></div>
         </div>
 
         <div id="lists">
@@ -68,13 +68,11 @@
   </div>
 
   <script type="text/x-handlebars" id="boards_template">
-    <div id="boards">
       <h2>All Boards</h2>
       {{#each boards}}
-        <a class="board" href="#">{{boards.title}}</a>
+        <a class="board" href="#">{{.}}</a>
       {{/each}}
-      <a id="new_board" class="board" href="#">Create New Board</a>
-    </div>
+      <div id="create_board" class="board" href="#"><h6 id="create_board_title">New Board</h6></div>
   </script>
 
   <script type="text/x-handlebars" id="lists_template">
@@ -121,6 +119,8 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
 <!-- Backbone javascripts -->
-  <script src="javascripts/app.js"></script>
+<script src="javascripts/views/board_list.js"></script>
+<script src="javascripts/models/board_list.js"></script>
+<script src="javascripts/app.js"></script>
 </body>
 </html>

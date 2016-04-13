@@ -97,7 +97,7 @@ main,
   margin-bottom: 8px;
 }
 
-a.board {
+.board {
   display: inline-block;
   text-decoration: none;
   color: white;
@@ -113,24 +113,39 @@ a.board {
   border-radius: 6px;
 }
 
-a.board:hover {
+.board:hover {
   background: #79BD8F;
+  color: #fff;
 }
 
-a#new_board {
+#create_board {
   background: #79BD8F;
   text-align: center;
-  padding-top: 25px;
 }
 
-a#new_board:hover {
-  background: rgba(121, 189, 143, 0.5);
+#create_board:hover {
+  background: hsl(139, 34%, 70%);
+  color: #fff;
+  cursor: pointer;
+}
+
+#create_board_title {
+  line-height: 80px;
+  color: #fff;
+}
+
+#create_board input {
+  background: hsl(139, 34%, 70%);
+  width: 100%;
+  border: none;
+  margin-top: 18px;
 }
 
 /***************************************************************************
 Lists
 ***************************************************************************/
 #lists {
+  display: none;
   position: absolute;
   top: 43px;
   right: 0px;
