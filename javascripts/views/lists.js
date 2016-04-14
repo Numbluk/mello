@@ -33,22 +33,26 @@ var ListsView = Backbone.View.extend({
       var lists_on_board = card_list.getLists(board_title);
       // For each list on board...
       lists_on_board.forEach(function(list_title) {
+        str += "\n<div class='list_wrapper'>";
         str += "\n<div class='list'>";
         str += "\n<h5 class='" + list_title + "'>";
-        str += "\n" + list_title + "\n</h5>";
+        str += "\n" + list_title;
+        str += "\n<div class='remove'>\n</div>";
+        str += "\n</h5>";
 
         // Grab each card in board and list
         card_list.filter(function(card) {
           return card.get("list") == list_title && card.get("board") == board_title;
         }).forEach(function(card) {
           str += "\n<div class='card'>";
-            str += "\n<p>"+"\n" + card.get("id") + "\n</p>";
+            str += "\n<p>"+"\n" + card.get("content") + "\n</p>";
+            str += "\n<div class='remove'>\n</div>";
           str += "\n</div>";
         });
 
         str += "\n<a class='add_card' href='#'>\nAdd a card...\n</a>";
 
-        str += "\n<div class='remove'>\n</div>";
+        str += "\n</div>";
         str += "\n</div>";
       });
 
@@ -76,7 +80,8 @@ var ListsView = Backbone.View.extend({
       this.collection.add(new Card({
         list: list_name,
         board: this.current_board,
-        id: "First Card"
+        content: 'First Card',
+        id: this.collection.count
       }));
       $(e.target).val('');
       this.render();
@@ -84,7 +89,7 @@ var ListsView = Backbone.View.extend({
   },
 
   removeList: function(e) {
-    var list = $(e.target).siblings("h5").attr("class");
+    var list = $(e.target).parent().attr("class");
 
     // remove list
     var idx = this.collection.lists.indexOf(list);
@@ -98,8 +103,8 @@ var ListsView = Backbone.View.extend({
   },
 
   editList: function(e) {
-    $(e.target).hide();
     $(e.target).closest(".list").prepend("<input type='text' id='edit_list'>");
+    $(e.target).hide();
     $("#edit_list").focus();
   },
 
@@ -134,15 +139,16 @@ var ListsView = Backbone.View.extend({
 
   submitCard: function(e) {
     if ( e.which == 13 ) {
-      var card_name = $(e.target).val();
-      if ( card_name === "" ) {
+      var card_content = $(e.target).val();
+      if ( card_content === "" ) {
         $(e.target).attr("placeholder", "Cannot be empty");
         return;
       }
       this.collection.add({
-        id: card_name,
+        id: this.collection.count,
+        content: card_content,
         list: $(e.target).siblings("h5").attr("class"),
-        board: $(e.target).parent().siblings("h4").text().trim()
+        board: $(e.target).closest(".list_wrapper").siblings("h4").text().trim()
       });
 
       $(e.target).val('');

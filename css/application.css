@@ -199,23 +199,29 @@ Lists
   clear: both;
 }
 
+div.list_wrapper {
+  display: inline-block;
+  vertical-align: top;
+  width: 270px;
+  margin-right: 10px;
+}
+
 
 div.list {
   box-sizing: border-box;
   display: inline-block;
   width: 270px;
-  margin-right: 10px;
   padding: 1px 8px 0 8px;
   background: #dbdbdb;
   position: relative;
 }
 
-div.list:hover div.remove {
+h5:hover div.remove {
   transition: all 0.5s ease;
   z-index: 2;
 }
 
-div.list:hover div.remove:hover {
+h5:hover div.remove:hover {
   cursor: pointer;
 }
 
@@ -241,12 +247,6 @@ div a.add_card {
   text-decoration: none;
   color: #999;
   margin: 12px 0 6px 0;
-}
-
-div.card {
-  height: auto;
-  background: #f3f3f3;
-  padding: 2px 7px 5px 7px;
 }
 
 div.list,
@@ -300,8 +300,13 @@ input.add_card_input:focus {
 /***************************************************************************
 Cards
 ***************************************************************************/
-.card {
+
+div.card {
+  height: auto;
+  background: #f3f3f3;
+  padding: 2px 7px 5px 7px;
   margin-bottom: 5px;
+  position: relative;
 }
 
 .card h6{
@@ -311,4 +316,38 @@ Cards
 .card p {
   margin: 2px 0 0 0;
   font-style: italic;
+}
+
+.card .remove,
+.card .remove::after {
+  background-color: hsl(0, 100%, 77%);
+  cursor: pointer;
+}
+
+.card:hover .remove {
+  transition: all 0.5s ease;
+  z-index: 1;
+}
+
+#card_modal {
+  display: none;
+  background-color: #fff;
+  position: absolute;
+  width: 350px;
+  height: 500px;
+  top: 10%;
+  left: 50%;
+  margin-left: -175px;
+  z-index: 3;
+}
+
+#card_modal_bg {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: hsla(0, 0%, 80%, 0.4);
+  z-index: 2;
 }

@@ -4,6 +4,13 @@ var CardList = Backbone.Collection.extend({
   initialize: function() {
     this.boards = [];
     this.lists = [];
+    this.count = 0;
+
+    this.listenTo(this, "add", this.increment);
+  },
+
+  increment: function() {
+    this.count++;
   },
 
   getLists: function(board) {
