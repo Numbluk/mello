@@ -12,7 +12,8 @@ var ListsView = Backbone.View.extend({
     "keypress #edit_list": "submitEdit",
     "blur #edit_list": "render",
     "click .add_card": "addCard",
-    "keypress .add_card_input": "submitCard"
+    "keypress .add_card_input": "submitCard",
+    "click .card .remove": "removeCard"
   },
 
   render: function(board_title_obj) {
@@ -44,7 +45,7 @@ var ListsView = Backbone.View.extend({
         card_list.filter(function(card) {
           return card.get("list") == list_title && card.get("board") == board_title;
         }).forEach(function(card) {
-          str += "\n<div class='card'>";
+          str += "\n<div class='card' data-card-id='"+ card.get("id") +"'>";
             str += "\n<p>"+"\n" + card.get("content") + "\n</p>";
             str += "\n<div class='remove'>\n</div>";
           str += "\n</div>";
@@ -157,6 +158,8 @@ var ListsView = Backbone.View.extend({
   },
 
   removeCard: function(e) {
-
+    var card_id = +$(e.target).closest(".card").attr("data-card-id");
+    this.collection.remove(card_id);
+    this.render();
   }
 });
