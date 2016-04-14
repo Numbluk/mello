@@ -11,7 +11,8 @@ var ListsView = Backbone.View.extend({
     "click div.remove": "removeList",
     "keypress #edit_list": "submitEdit",
     "blur #edit_list": "render",
-    "click .add_card": "addCard"
+    "click .add_card": "addCard",
+    "keypress .add_card_input": "submitCard"
   },
 
   render: function(board_title_obj) {
@@ -41,7 +42,7 @@ var ListsView = Backbone.View.extend({
           return card.get("list") == list_title && card.get("board") == board_title;
         }).forEach(function(card) {
           str += "\n<div class='card'>";
-            str += "\n<p>"+"\n" + card.get("content") + "\n</p>";
+            str += "\n<p>"+"\n" + card.get("id") + "\n</p>";
           str += "\n</div>";
         });
 
@@ -75,7 +76,7 @@ var ListsView = Backbone.View.extend({
       this.collection.add(new Card({
         list: list_name,
         board: this.current_board,
-        content: "First Card"
+        id: "First Card"
       }));
       $(e.target).val('');
       this.render();
@@ -103,7 +104,7 @@ var ListsView = Backbone.View.extend({
   },
 
   submitEdit: function(e) {
-    if ( e.which == 13 ) {
+    if ( e.which === 13 ) {
       var list_name = $(e.target).val();
       if ( list_name === "" ) {
         $(e.target).attr("placeholder", "Cannot be empty");
@@ -127,12 +128,26 @@ var ListsView = Backbone.View.extend({
   },
 
   addCard: function(e) {
-    $(e.target).replaceWith("<input type='text' id='add_card'>");
-    $("input#add_card").focus();
+    $(e.target).replaceWith("<input type='text' class='add_card_input'>");
+    $("input.add_card_input").focus();
   },
 
   submitCard: function(e) {
+    if ( e.which == 13 ) {
+      var card_name = $(e.target).val();
+      if ( card_name === "" ) {
+        $(e.target).attr("placeholder", "Cannot be empty");
+        return;
+      }
+      this.collection.add({
+        id: card_name,
+        list: $(e.target).siblings("h5").attr("class"),
+        board: $(e.target).parent().siblings("h4").text().trim()
+      });
 
+      $(e.target).val('');
+      this.render();
+    }
   },
 
   removeCard: function(e) {

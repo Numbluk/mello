@@ -279,7 +279,7 @@ input#edit_list:focus {
   border: none;
 }
 
-input#add_card {
+input.add_card_input {
   color: #515151;
   background: hsl(0, 0%, 86%);
   height: 26px;
@@ -291,7 +291,7 @@ input#add_card {
   border-radius: 0;
 }
 
-input#add_card:focus {
+input.add_card_input:focus {
   border: none;
   padding-bottom: 3px;
   border-bottom: 1px solid hsl(0, 0%, 73%);
@@ -300,6 +300,10 @@ input#add_card:focus {
 /***************************************************************************
 Cards
 ***************************************************************************/
+.card {
+  margin-bottom: 5px;
+}
+
 .card h6{
   margin-bottom: 1px;
 }
