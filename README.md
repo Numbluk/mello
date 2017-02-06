@@ -1,3 +1,5 @@
 # Overview
 
-Basic implementation of trello.
+Basic replication of trello.
+Uses Backbone.
+No persistance.
